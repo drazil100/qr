@@ -105,13 +105,15 @@ img {
 
         let totalRow = 0;
         let skipped = 0;
+        let fName = "SHP";
         for (section = 1; section <= 5; section++) {
           const qrCanvas = document.querySelector("#qrcode" + section + " canvas");
 
-          if (!qrCanvas) {
+          if (!qrCanvas || document.getElementById("text"+section).value == "") {
             skipped++;
             continue;
           }
+          fName += "-" + document.getElementById("text"+section).value.toUpperCase();
 
           const qrDataURL = qrCanvas.toDataURL("image/png");
 
@@ -128,7 +130,7 @@ img {
           totalRow++;
           }
         }
-        pdf.save("qrcode.pdf");
+        pdf.save(fName + "-01.pdf");
       }
     </script>
 
