@@ -3,26 +3,71 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code PDF Generator</title>
+    <title>QR Code Generator</title>
     <script src="index_files/qrcode.min.js"></script>
     <script src="index_files/jspdf.umd.min.js"></script>
+<style>
+img {
+  width:600px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+</style>
   </head>
   <body>
-    <center>
-    <h1>QR Code PDF Generator</h1>
-    SHP<input type="text" id="text1" maxlength="2" style="width: 20px;" value="ZZ">01<br>
-    SHP<input type="text" id="text2" maxlength="2" style="width: 20px;" value="NH">01<br>
-    SHP<input type="text" id="text3" maxlength="2" style="width: 20px;" value="ED">01<br>
-    SHP<input type="text" id="text4" maxlength="2" style="width: 20px;" value="DN">01<br>
-    SHP<input type="text" id="text5" maxlength="2" style="width: 20px;">01<br>
-    <!-- <button onclick="generateQR()">Generate QR Codes</button> -->
-    <div style="display:none;" id="qrcode1" title="SHPZZ01"><canvas width="108" height="108" style="display: none;"></canvas><img style="display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABsCAYAAACPZlfNAAAEuUlEQVR4Xu2djW7jMAyD2/d/6K5piyVL7fqj6aRNxwMOOAzyHylKspLszqfT6XL9+xF/LpfyVs7n89P+arZrw9Fj3w3UhEQIq7BQIjuELRCIwtruEIW9wCgKazhQFNapMJrQ29PXLZxiYJqVjqcqKZ25NvZd+NzOXSo63rUhZd0QBpK/o6iR5XYUtkJT8fReEqlCavPT8QmJvQytxlHAQ9hfBHAOo55aApgmdKVK3GIdErYnG3oe6tvKfCGs4x6mAExIU+YLYSHsGQHqQQmJM3a1FBSFRWH7KOxdV48UHeDC7l4BSOIv2SitqT2qaKk1tceGlBwWhTU8PYTNANEiiipbme+wRUcU9sEKU/LL2tYhNjlsgaZbSNAQHcJoYO5QrAJuCOsAmHJHk2oI+5JOR3LYgsjpacHIRE1Vp+QwJ/wp66z3rhQd9NzUzu4l0oWonQJkCIvCkF9FYZ1lfRQWhX2XwtBpNjBym780Lzp2GxxbmvKr3q13iKB3RQndDYxD2APUENbhXQmJbdCisKMp7OrVH/MFZs2/aG5q++fxLc4h7FgkhrBj8XUKYSFsPALJYYvWVHLYeAfbcsZiSKQe7dhteajl3LQIpg3m2r6di7cyNoQ9GAhhjUcpUdiMQBS28IaExI6HkG64cdT4LwgrATS6wKBATnuhhNPQQtem6057pGtT56s2wmlZH8JeQx3COooWCloUNghcpVtfsg1hGxYY1MuTw/66pvUAk3o0TbSuHd2PY+fu0a0FQtiLTocSBSiRIaxxSXYACmHUDTvtnFBHie3c2u8wuo70MQTdFAWIzufa0f04du4ebcJKF2c6qdMRoWOVLgIlgl4J9iJHWcd6vEJBp7lA+VqEOhVtL9E9SuAa/0FC9U4ahd2hCWGN6o2qMyFxdXGOwg6msCkarL3dSd5KjCfrOvNNY50c5uZUuncF711+dZGzcTq2mqQLiZ9WiSGsgf5eiT+EuTJ4jA9hM5BSp0OJqYO42rW0PrTC6CsCI4lR5xpdOGyhZHpNoWKw3+lQQR5pH8IWoTIKG+laq0subE3RNtvtmhLCQthwBBISFyHx+s+P+ca5mmhhaHE8RQlLtMBw9lPFIoTdYQ1hHe4Vhc2gRWENB4rCorAOBKIwDNqhFbZH60YBiJb1tEdIq7xPy6m34qhUJYawO6UhbOHaUdjraG0/XsHJABqGsBBWRICGd9eB6DrQn6vvouAcNjrxKwDRQ7rFxHq88k4HXZsWRnZIDGHtOxIlfG1HH2pKVWIIC2FP0WF0Hrh5pNHpT0jsLOuTw2YEDlF0OOGYJnnHKRQlu2cJYS5Tj/E09IawDsDfmStDWAjb5xdd0RBSyw8dPP0OicIa6NGLoQKkQji50Cpr066GM+fXdTpC2MJtqCJoWKLzKR4ZwkIY9b+ineNANMQeupfoAOSMrbE6ek47h1nuVxisHJDaUjvFo+m5lXBO5yzu8/pD9FG6swgFyH2HIoSNZmkxnwIutaV21IGU40dhHeSGMMXFRFsFXGpL7b5OYSL2w8yVsOI2UdebVtZ2Dkz3feiPIbZQRAhz3O4xVvFy6ql0W8radE7H0aKwBsohrMMNFdCisA6ARw8JYTOiNSx+AK8Cy+n8w4QyAAAAAElFTkSuQmCC"></div>
-    <div style="display:none;" id="qrcode2" title="SHPNH01"><canvas width="108" height="108" style="display: none;"></canvas><img style="display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABsCAYAAACPZlfNAAAE0klEQVR4Xu2d23bqMAxE4f8/mkNoTkmDHW95FIfAdC1eWvk2M7pYSdvr5XK53T9v8XW7lbdyvV5f9lezXRuWxpYOW5qPjh0J3oSECZtAKIjFhDWkaA9r+6o9bMbIHtYWC85LzmFPqIoeRhN6Bye/QxQSpkloflHOUltDmZNiVlvbhG0gaMIW4NjDtn3NHkZjUUNU048dEjcqtRrOzmELZLJLXDpf5B6W3a2ge6x5GBWQum9cdIzYkAlblO+FdtyjOi61piJqI6mBzmfCTJh0X4uU9SMikD2sM2/TiEGiTzQnnjYkHgnakWubsI7mrwlr3MNoV2RUHjFhJuwl3cmtqRHqjZT1R6r8yLVPkcNK1RYVkNL3c1n/wd16KqCvaE3ZwxYdkDO0pkyYCUNNiFPnMHTCgBG9Wz36Z5XO9Xo5Wr3RQiRCWODoyFQu69EqASMTtg2WCWs0eiN5knpoQL/5F2dlcQpG5OKslMcUcIfEznuYc1ijSsz2JjpfxMOUAoPmTyoUer4Mu496t14hggogA3RlDhM2o2fCOmTkkNgGzR52Ng+7q/ptfgOzpq/s3NTW8ftaXE3Y+5JTvL+aMBOWjoBD4uLibA9L19euEzqH7Qpv/uRFwrJD0B4tHuWiq4ytUaDMGRlrwmYGVFFFQF+THhlrwkzY6z1cVa/y7Ct7rENiZ16OhBElBNHtjdoPrhKplyidrsgTXrqfEYBPayiE0Sgw2ZmwpOavCVvILhsMquiIF2fvsfqoiXY66OYdEhdtJPg+JRWQQ2KiFw/zsClf0sTca0cPE/FO6vFUvbS704vB/3F0ndCLpOqmestoE9YOp0NeEbCHbRNB8XnkMIfEHzBpqFKjD13HIbGjwIiEaErkKQijiZ8eOuIRtDg5kpzQuUeERBP2REAVxpAcZsJMGC4SHBIjAXfDVg4N8P+xfAVhKphrnihoNX7pPWXUvul+qLYj8+G/hEMXL9mZsG30TJiirsXYUQ9UTZgJ0xBwSEwMifQBpkaZNlpt56xXzy5OaqdT9i0/cdYg10YrB9/j0k5Po+zbhDWav5SEiJ0Ja4BOc6VDYkR2HbaKUj8uJN4PtPs7HZSjatxObkOp+9mjOUALo8O69RHlZ3uYCaMINOzsYU+Aqlg4JNZVFClOaMFDtW3CKFKd5b8JWwDnHPYEY8jjFVpV7ZHDIp1wXKnBqrXDqX+HhF5zi8Tu3k1Rr5nmp7aK3R5Vay82tTM/vl8qOkzYD9Sqx5uwRkFgD1Mk0hhLwXVI/AskDolK2UoTfyQUU8Lpvuket0Il0be6bxM2o2zCkvJNTbWqUkkJH3kJh3iXGt5DVSINLbQ8poCbMOewogYcEhNDIvVuCnqkuFFCHR0bsTtF0WHCnpSasIi8N2ypqNTlTJiK4DzehC2ApGA4h3WA9m5lfWk/6pVixJzy4xWqchP2RECpRk1YI1oo4EY6GDRlmjATRrXC/1pnROVKHlLGqq0yiprsYXQhahcBLTt/0qKBnqVmFxEgXQvfw+iE1M6EUaT+2pmwHS++9rAOUVLQlLDrkLhCQAHzKwjrEHLKEApuZDFK9pFr02bD4753/7z974dFCFrbmjAFvcbYI1V+5Nr2sEZXIwKQok/q3ZH9OCTOaNnDOqR5JGhHrh3xsH9LWr/prIlHWAAAAABJRU5ErkJggg=="></div>
-    <div style="display:none;" id="qrcode3" title="SHPED01"><canvas width="108" height="108" style="display: none;"></canvas><img style="display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABsCAYAAACPZlfNAAAEqUlEQVR4Xu2c4W6DMBCD2/d/6K2slaBtQuw4QOm+SfszXZLDPjtHgF0vl8vP7fcjfn5+9FSu1+vQnEtrj15jRMLTVesojVhxZQ4IawMMYQ+MUFi7WN4iUFgbNBT2DQpzKr1dE+WI0oZeWzfZ/JNrqa2bzKniVVu7qLCjEoKwmU4IU0t7EYfCGmCgMBR2Sez91AobvfGnTYdKhLPOq2s6hO2Bz5Sf3HTskZBjiRC2KK/Rd/3qfBA2cA9DYTOYagGqjakzH5a4gip7WGdbX8I0aSbUyocwCCvWytdZIgpbNCOlB5gO44q9qPOprfrf/UjhibMzXskbS8QSscQlAqOVjMIOUFhinRAGYVgilji1jYX3A488mkra+n9riUob7MQkQDptfbKOs4c5167EnvoVgTMoTCHBiYGwBVrqDTYK++Iu0VGPEovCvllhSgVsEZM+cVYbjCRui+t25jzFq9oJwOotihrngLtFLIQ9UIWwjvLCEtugobCzKexW1R/zBWa7vuaI0fuas/aRsVcIOxJ+f20I8zE7dASEHQq/vziE+ZgdOgLCDoXfX7xI2B4PK0upOg1r0iWma/swr3e3Tj4QtnIflhBTG6uKoXqIUGrr1UnVylDnQ2EzohDWkItTLIny0uLFEs9mibd8346mRlfb6AZhwjg5XU/G1tQ1GrPqHghhd2hUq4KwBQIOaIlKkrEQBmFWDyN/42zN+hLMHpag9zxWPppS7Sqxm/SJ8zhYxsy0RaFC2BhuirNA2AKWvdrohE8Ig7ALlphIqDH24xQ22pacjw9UMEqYqmPVRsvhXMWs+m69+hKOepFO8q+xEDYjAmGNG/TkdsQpUhTW0YioboEldmzS0xC1+pPqVddw1FSKTXKc5tulS0w2/r8kxX9TpCpCBa1GzpH5QFiHZCDsAVp6lojCGp3VaI+GsLbcscQ2Rm8Rp7DEjusaNkQFKG1u1Bv55MLSblRWWJJkOhbCFicg6tFUCnoyHsIgTKofteuUJlvphJ11sMQVtB0gVdLiPWw6+VEX2zrOOYFQbVIF3Vl7dHPj4HqK/yKQAARhTjmYsU6VozAT3C3CIayNKpa40r214Vu02+ITBWfO4lZA03GHxVF3sqduQliavJKUugdNc6mxaoNRys+55j3yqWG4y7v1aUXuARCENWSmkoDCnoFEYR1Nh1psiUVjiQ3Ff50lJtWinp85oKX74ut45/rUPLdQomyJzgW9ggFhMyIqFrElQtg66IniHWxR2ANpBzQssaNTSypaHVuzJQhrEDZ6804Ad0hM8q6+8jcdo/U2CcoR1BSjbrSf9l5iapMQtqgQtQiSc0MIW6CnVt8WR1NYYscpAoTNoFlYnHUPG211icU6+3SS95/bQNgdQgjraBCcLjGpVNWCtmg6krxRWEdRpfdhENYAvQTQv1CYepOsxqmg1dr6tFJfxzv5qNeYxNXsWG46ksWTKoewZ/Qg7IEHCmtI0gFI7dbUE4xU8aPdRs3H6hJHJwlh64hae9hoctT5EoXU9jp1zk8roBpmp323XrURCFPl0hGnglutvuCDBBQGYfEHFkUXuf3xlJ/MYokdihg9BEtsI/oLCfnv2kGP4ksAAAAASUVORK5CYII="></div>
-    <div style="display:none;" id="qrcode4" title="SHPDN01"><canvas width="108" height="108" style="display: none;"></canvas><img style="display: block;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABsCAYAAACPZlfNAAAE60lEQVR4Xu2d25LbMAxDk///6N1cPBPXK1oHIuXEKTrTN4qiARKkZKe9Xi6Xn9vfj/jz88NDuV6vKGbF59Yh3QMFUmR0f2qOUtGmkRsFXAqm4tOEiQQr4JowEdwZ5iasj6olcQcjWsV9mOssmoQpmT4aSguMaN8McC2fdO9o33fhc8fahC0ZR4m9m5uwHdAeWQVH+Fa1UyKonQlboWxJfIERJakl8Vsl8V2yFA01mXgy0hlJYiYeRY5xhR0RkNLMM/GYsM5sTzPIhBX2sExGm7D9jKb4SOcwE/YCXQGYXCwo/k7Rw6qThYC4d/5TACZ7Kf5M2MBdogKwCSMIgMM4caPcJVarQPrgfERAR910ELIsiRuU6I35jLtEEzb5HKaQS8ig/iyJKzQpaFGFKYfsLYl0bxNmwpoCoEydpx3rXWGdUfjTpkQTVnR2IU2/oi/RPtSKh65Vehh9bmqXPofRjagdBS3yl1lP15qwwaEjUyWZtSbMhFEBCj88wlMi3gkaUlmyJP6LwCm+/KXkHmEH83GamQlboFUOr9PYAI5NmAkDaRKYKK9XaEVU240/Xc1KV9jZKuyWgR/zC8zsRFg9dNTURK2Xqwl7AnqCvH3EacJ2JLG2Nmq8mTATVpNJay/VvYn6q3+SvEdX2DdUGM3AzEvNVq4p5zC6vjrGaECh+2TOheHQYcL2pYuCnkmqMHlbY70JM2Go21oSXzC5wlDKMKOPk8RW2LSpUt1W9qAA0dsK+izU32MYaPzTFMr6LR7hRzj0aoo+pAnryxqpYxO2Qokmn1IhrrAVwJbEFxj4poNmpSVxsiTe3P95H1ad0cqAQfRduW1QZI3uTeUvk+RRLPgzNxpk5qHpWhO2QcoVtp86NHldYRMHEaW6TZiC1mJ7hAqEfQQekqdUGL38pdMfDfKdw8CMIaganzBZTNgTGppoihhQFVB8Ns9hNPhMQK4whabOwdmEjYG5XZVJaEtihwOapAqVUwi7BTB806EEX21LwaDSa8KqGZp8uDdhJqz5+Xc2MVJ3iZM52XVvSRy49jFh+wjQpFJwxO/DFKfVtlRG6IDxaTcdCrEmbGGPJoWSjJQIave4kaEf4SiBVttSMF1h1cgP+jNhnaupQVynLTNhK8JaNx3TkO84ViSNvkSkA0Z279Y+tDdJe5uwJ9QSaPA/oDNhqzR2hb1LBzsH9igsE2bCMAKZISiTaI9zmHvYF/QwpQHjtNwYKplGM3o0lmjoiPalw0R1PGGFmbAn1CZscMpzhXUOzq4wV9gfOXcP2+9wUdEc8saZNukwyMTNAm38Wdmlz0jjCc+frbG+enPqz4T16XSFLRi5wjpXTjN6WGZYMmEmbMoPLL5KElsdgPbPfvcYm+q2qxRlae1owrJMLeupHJuwDuCusIGMpKBlx3pLYufuj3JnwlZ3gfD30ac+ODebL3zwzLg+o+JpkpuwAaRM2ODrFVfYwOuVamlJj7eWxBeLdEigKkP90bPMfV9KeHWiRXtTLLJ2+OCc3Shz4qfkUOmk47/yzJnEkPa5GaMfpStOia1CgmJLEsOEEYY2NgoJiq0JGyCDLFFIUGxNGEF/wEYhQbH9LwkbwL9kiTIl0gGDTqgz+lomxgjQ036qnQGDTnTZBMrEaMJWCJiwEkHUflSXyV4TZsIwApkB6r6Je9gO1J/Yw34Bw5Gq+HJXTvcAAAAASUVORK5CYII="></div>
-    <div style="display:none;" id="qrcode5"></div>
-    <button onclick="generatePDF()">Generate PDF</button>
-    </center>
+    <div>
+      <center>
+        <h1>QR Code Generator</h1>
+        SHP<input type="text" id="text1" maxlength="2" style="width: 20px;">01<br>
+        SHP<input type="text" id="text2" maxlength="2" style="width: 20px;">01<br>
+        SHP<input type="text" id="text3" maxlength="2" style="width: 20px;">01<br>
+        SHP<input type="text" id="text4" maxlength="2" style="width: 20px;">01<br>
+        SHP<input type="text" id="text5" maxlength="2" style="width: 20px;">01<br>
+        <!-- <button onclick="generateQR()">Generate QR Codes</button> -->
+        <div style="display:none;" id="qrcode1"></div>
+        <div style="display:none;" id="qrcode2"></div>
+        <div style="display:none;" id="qrcode3"></div>
+        <div style="display:none;" id="qrcode4"></div>
+        <div style="display:none;" id="qrcode5"></div>
+        <button onclick="generatePDF()">Generate PDF</button>
+      </center>
+    </div>
+    <div style="max-width:60%;margin-left:auto;margin-right:auto;">
+      <ul>
+        <img src="images/1.jpg">
+        <li>What you need</li>
+        <ul>
+          <li>Access to a printer</li>
+          <li>QR Code Slip / Clip</li>
+          <li>Scisors</li>
+          <li>Glue Stick</li>
+          <li>Scrap paper / cardboard</li>
+          <li>Clear Packing Tape</li>
+          <li>Knife</li>
+        </ul>
+        <li>Generate your QR code using the form above (up to 5 different QR codes may be generated at one time)</li>
+        <br><img src="images/2.jpg">
+        <li>Cut out QR code</li>
+        <br><img src="images/3.jpg">
+        <li>Place QR code face down on scrap of cardboard and coat the back with a gluestick</li>
+        <br><img src="images/4.jpg">
+        <li>Stick QR code on print and let it dry for at least 5 minutes</li>
+        <br><img src="images/5.jpg">
+        <li>Cover QR code with clear packing tape </li>
+        <br><img src="images/6.jpg">
+        <li>Carefully use a sharp knife to score the edges of the tape</li>
+
+        <ul>
+        <li>DISCLAIMER: There is a real risk of slipping and cutting yourself trying to score the tape this way. While this method produces a cleaner cut, and makes it less likely to peel, you can also just cut the edges of the tape with scisors.</li>
+        </ul>
+
+        <br><img src="images/7.jpg"><img src="images/8.jpg">
+        <li>Peel away the tape</li>
+        <br><img src="images/9.jpg">
+        <li>Run fingernail along edges of tape to make sure there is a good seal</li>
+      </ul>
+    </div>
 
     <script>
       function generateQR() {
@@ -86,7 +131,7 @@
         pdf.save("qrcode.pdf");
       }
     </script>
-  
+
 
 
 </body></html>
