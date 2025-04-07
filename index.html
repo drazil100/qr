@@ -41,6 +41,12 @@ body {
       min-height: auto;
       align-items: stretch;
     }
+    @media (max-width: 800px) {
+      .step-box img {
+        width: 170px;
+        height: auto;
+      }
+    }
 </style>
   </head>
   <body>
@@ -59,6 +65,7 @@ body {
         <div style="display:none;" id="qrcode3"></div>
         <div style="display:none;" id="qrcode4"></div>
         <div style="display:none;" id="qrcode5"></div>
+        <br>
         <button onclick="generatePDF()">Generate PDF</button>
       </center>
     </div>
@@ -166,10 +173,11 @@ body {
         <li>Do not leave in a hot car.</li>
         <ul>
           <li>It could potentially deform in hot enough conditions.</li>
+          <li>Print QR Slip / Clip in PETG for better heat resistance.</li>
         </ul>
         <li>Avoid getting it wet.</li>
         <ul>
-          <li>While the packing tape SHOULD protect it against water damage, I have no clue how well it will hold up in practice.</li>
+          <li>While the packing tape SHOULD protect it against water damage, I have no clue how well the tape will hold up in practice.</li>
         </ul>
       </ul>
       </div>
