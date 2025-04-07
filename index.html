@@ -13,6 +13,34 @@ img {
   margin-left:auto;
   margin-right:auto;
 }
+body {
+  background-color:#FFDDDD;
+}
+    .step-box {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      min-height: 200px;
+    }
+    .step-box img {
+      width: 300px;
+      height: auto;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .step-box .step-text {
+      flex-grow: 1;
+      text-align: left;
+    }
+        .step-box.no-image {
+      min-height: auto;
+      align-items: stretch;
+    }
 </style>
   </head>
   <body>
@@ -34,63 +62,117 @@ img {
         <button onclick="generatePDF()">Generate PDF</button>
       </center>
     </div>
-    <div style="max-width:60%;margin-left:auto;margin-right:auto;">
-      <center><h1 id="assembly">Assembly Instructions</h1></center>
+    <div style="max-width: 800px; width: 100%; margin: 0 auto; font-family: sans-serif; padding: 1rem;">
+  <h1 id="assembly" style="text-align: center;">Assembly Instructions</h1>
+
+  <!-- First image above the list -->
+  <div style="text-align: center; margin-bottom: 1.5rem;">
+    <img src="images/1.jpg" style="max-width: 100%; height: auto; border-radius: 8px;">
+  </div>
+
+  <!-- What you need step box -->
+  <div class="step-box no-image">
+    <div class="step-text">
+      <h3>What you need</h3>
       <ul>
-        <img src="images/1.jpg">
-        <li>What you need</li>
-        <ul>
-          <li>Access to a printer</li>
-          <li>QR Code <a href="QR_Slip.zip">Slip</a> / <a href="QR_Clip.zip">Clip</a></li>
+        <li>Access to a printer</li>
+        <li>
+          A QR Code <a href="QR_Slip.zip">Slip</a> / <a href="QR_Clip.zip">Clip</a>.
           <ul>
-            <li>NOTE: If you do not have access to a 3D printer or a previous QR Slip / Clip, there are plenty of 3D printing services online that you can pay to print you one.</li>
-            <li>WARNING: The clip variant's tolerances are calibrated for my specific watch. It likely won't fit other watch bands without precise adjustments. This version is only recommended if you have direct access to a 3D printer.</li>
+            <li><strong>NOTE:</strong> If you do not know anyone with a 3D printer, there are plenty of 3D printing services online you can pay to print these.</li>
+            <li><strong>WARNING:</strong> The clip version is designed for my specific watch. It likely won't fit other watches without very precise adjustments.</li>
           </ul>
-          <li>Scisors</li>
-          <li>Glue Stick</li>
-          <li>Scrap paper or cardboard</li>
-          <li>Clear Packing Tape</li>
-          <li>Knife</li>
-        </ul>
-        <li>Generate your QR code using the form above</li>
-        <ul>
-          <li>Up to 5 unique QR codes may be generated at a time</li>
-          <li>Each text field will generate 14 copies of the QR code</li>
-          <li>You do not need to fill out every text field</li>
-        </ul>
-        <br><img src="images/2.jpg">
-        <li>Cut out QR code</li>
-        <br><img src="images/3.jpg">
-        <li>Place QR code face down on scrap of cardboard and coat the back with a gluestick</li>
-        <br><img src="images/4.jpg">
-        <li>Stick QR code on QR Slip / Clip and let it dry for at least 5 minutes</li>
-        <br><img src="images/5.jpg">
-        <li>Cover QR code with clear packing tape </li>
-        <br><img src="images/6.jpg">
-        <li>Carefully use a sharp knife to score the edges of the tape</li>
-
-        <ul>
-        <li>DISCLAIMER: There is a risk of cutting yourself using this method. While this method produces a cleaner cut, and makes it less likely to peel, you can also just cut the edges of the tape with scisors.</li>
-        </ul>
-
-        <br><img src="images/7.jpg">
-        <li>Peel away the tape</li>
-        <br><img src="images/9.jpg">
-        <li>Run fingernail along edges of tape to make sure there is a good seal</li>
+        </li>
+        <li>Scissors</li>
+        <li>Glue Stick</li>
+        <li>Scrap paper or cardboard</li>
+        <li>Clear Packing Tape</li>
+        <li>Knife</li>
       </ul>
     </div>
+  </div>
+
+  <!-- Generate QR code step -->
+  <div class="step-box no-image">
+    <div class="step-text">
+      <p><strong>Step 1:</strong> Generate your QR code using the form above.</p>
+      <ul>
+        <li>Up to 5 unique QR codes may be generated at a time.</li>
+        <li>Each text field will generate 14 copies of the QR code.</li>
+        <li>You do not need to fill out every text field.</li>
+      </ul>
+    </div>
+  </div>
+
+    <!-- Steps with images -->
+  <div class="step-box">
+    <a href="images/2.jpg">
+      <img src="images/2.jpg" alt="Step 1">
+    </a>
+    <div class="step-text"><p><strong>Step 2:</strong> Cut out QR code.</p></div>
+  </div>
+
+  <div class="step-box">
+    <a href="images/3.jpg">
+      <img src="images/3.jpg" alt="Step 2">
+    </a>
+    <div class="step-text"><p><strong>Step 3:</strong> Place QR code face down on scrap of cardboard and coat the back with a glue stick.</p></div>
+  </div>
+
+  <div class="step-box">
+    <a href="images/4.jpg">
+      <img src="images/4.jpg" alt="Step 3">
+    </a>
+    <div class="step-text"><p><strong>Step 4:</strong> Stick QR code on QR Slip / Clip and let it dry for at least 5 minutes.</p></div>
+  </div>
+
+  <div class="step-box">
+    <a href="images/5.jpg">
+      <img src="images/5.jpg" alt="Step 4">
+    </a>
+    <div class="step-text"><p><strong>Step 5:</strong> Cover QR code with clear packing tape.</p></div>
+  </div>
+
+  <div class="step-box">
+    <a href="images/6.jpg">
+      <img src="images/6.jpg" alt="Step 5">
+    </a>
+    <div class="step-text">
+      <p><strong>Step 6:</strong> Carefully use a sharp knife to score the edges of the tape.</p>
+      <p style="font-size: 0.9em; color: #a00;"><strong>DISCLAIMER:</strong> There is a risk of cutting yourself using this method. While the results won't be as clean, you can just cut the tape with scisors to avoid this risk.</p>
+    </div>
+  </div>
+
+  <div class="step-box">
+    <a href="images/7.jpg">
+      <img src="images/7.jpg" alt="Step 6">
+    </a>
+    <div class="step-text"><p><strong>Step 7:</strong> Peel away the tape.</p></div>
+  </div>
+
+  <div class="step-box">
+    <a href="images/9.jpg">
+      <img src="images/9.jpg" alt="Step 7">
+    </a>
+    <div class="step-text"><p><strong>Step 8:</strong> Run fingernail along edges of tape to make sure there is a good seal.</p></div>
+  </div>
+</div>
+
+
     <div style="max-width:60%;margin-left:auto;margin-right:auto;">
       <center><h1 id="care">Care Instructions</h1></center>
+      <div class="step-box no-image">
       <ul>
-        <li>Do not leave in a hot car</li>
+        <li>Do not leave in a hot car.</li>
         <ul>
           <li>It could potentially deform in hot enough conditions.</li>
         </ul>
-        <li>Avoid getting wet</li>
+        <li>Avoid getting it wet.</li>
         <ul>
-          <li>While the packing tape SHOULD protect it against water damage, I have no clue how well it will hold up in practice</li>
+          <li>While the packing tape SHOULD protect it against water damage, I have no clue how well it will hold up in practice.</li>
         </ul>
       </ul>
+      </div>
     </div>
 
     <script>
